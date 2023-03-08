@@ -1,6 +1,7 @@
 package br.com.ada.LocateCar_sb.repository;
 
-import br.com.ada.programacaowebIsb.model.Veiculo;
+
+import br.com.ada.LocateCar_sb.model.Veiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

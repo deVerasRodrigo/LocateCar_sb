@@ -1,12 +1,13 @@
 package br.com.ada.LocateCar_sb.service;
 
-import br.com.ada.programacaowebIsb.model.Cliente;
-import br.com.ada.programacaowebIsb.repository.ClienteRepository;
+import br.com.ada.LocateCar_sb.model.Cliente;
+import br.com.ada.LocateCar_sb.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class ClienteService {

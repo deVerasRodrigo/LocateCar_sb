@@ -1,7 +1,7 @@
 package br.com.ada.LocateCar_sb.controller;
 
-import br.com.ada.programacaowebIsb.model.Cliente;
-import br.com.ada.programacaowebIsb.service.ClienteService;
+import br.com.ada.LocateCar_sb.model.Cliente;
+import br.com.ada.LocateCar_sb.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

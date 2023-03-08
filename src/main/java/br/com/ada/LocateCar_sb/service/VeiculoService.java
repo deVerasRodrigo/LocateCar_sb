@@ -1,7 +1,8 @@
 package br.com.ada.LocateCar_sb.service;
 
-import br.com.ada.programacaowebIsb.model.Veiculo;
-import br.com.ada.programacaowebIsb.repository.VeiculoRepository;
+
+import br.com.ada.LocateCar_sb.model.Veiculo;
+import br.com.ada.LocateCar_sb.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
