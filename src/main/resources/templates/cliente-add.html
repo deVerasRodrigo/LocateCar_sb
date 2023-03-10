@@ -21,18 +21,27 @@
             <label for="inputCpf" class="col-sm-2 col-form-label">CPF</label>
             <div class="col-sm-3">
                 <input type="text" th:readonly="${add} ? 'false' : 'true'" th:field="*{cpf}" class="form-control" id="inputCpf">
+                <ul>
+                    <li th:each="erro : ${#fields.errors('cpf')}" th:text="${erro}" />
+                </ul>
             </div>
         </div>
         <div class="mb-3 row">
             <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
             <div class="col-sm-3">
                 <input type="text" th:field="*{nome}" class="form-control" id="inputNome">
+                <ul>
+                    <li th:each="erro : ${#fields.errors('nome')}" th:text="${erro}" />
+                </ul>
             </div>
         </div>
         <div class="mb-3 row">
             <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
             <div class="col-sm-3">
                 <input type="text" th:field="*{email}" class="form-control" id="inputEmail">
+                <ul>
+                    <li th:each="erro : ${#fields.errors('email')}" th:text="${erro}" />
+                </ul>
             </div>
         </div>
         <div class="d-flex">

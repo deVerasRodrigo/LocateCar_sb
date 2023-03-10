@@ -2,12 +2,15 @@ package br.com.ada.LocateCar_sb.controller;
 
 import br.com.ada.LocateCar_sb.model.Veiculo;
 import br.com.ada.LocateCar_sb.service.VeiculoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -24,14 +27,17 @@ public class VeiculoController {
     }
 
     @GetMapping("/veiculo/add")
-    public String mostrarAddVeiculo(Model model) {
+    public String mostrarAddVeiculo(Model model, Veiculo veiculo) {
         model.addAttribute("add", Boolean.TRUE);
-        model.addAttribute("veiculo", new Veiculo());
+        model.addAttribute("veiculo", Objects.nonNull(veiculo) ? veiculo : new Veiculo());
         return "veiculo-add";
     }
 
     @PostMapping("/veiculo/add")
-    public String addVeiculo(@ModelAttribute("veiculo") Veiculo veiculo) {
+    public String addVeiculo(@Valid @ModelAttribute("veiculo") Veiculo veiculo, BindingResult result, Model model) {
+        if(result.hasErrors()){
+            return mostrarAddVeiculo(model, veiculo);
+        }
         this.veiculoService.createVeiculo(veiculo);
         return "redirect:/veiculos";
     }

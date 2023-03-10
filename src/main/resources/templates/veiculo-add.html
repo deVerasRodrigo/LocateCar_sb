@@ -5,7 +5,6 @@
 </head>
 <body>
 <main>
-<br/><br/>
 <form th:action="${add} ? @{/veiculo/add} : @{/veiculo/{veiculoId}/edit(veiculoId=${veiculo.id})}"
       th:object="${veiculo}" th:method="${add} ? POST : PUT">
     <div class="container">
@@ -20,6 +19,9 @@
             <label for="inputPlaca" class="col-sm-2 col-form-label">Placa</label>
             <div class="col-sm-3">
                 <input type="text" th:readonly="${add} ? 'false' : 'true'" th:field="*{placa}" class="form-control" id="inputPlaca">
+                <ul>
+                    <li th:each="erro : ${#fields.errors('placa')}" th:text="${erro}" />
+                </ul>
             </div>
         </div>
         <div class="mb-3 row">

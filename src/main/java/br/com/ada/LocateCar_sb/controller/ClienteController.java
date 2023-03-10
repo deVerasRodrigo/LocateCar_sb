@@ -2,12 +2,15 @@ package br.com.ada.LocateCar_sb.controller;
 
 import br.com.ada.LocateCar_sb.model.Cliente;
 import br.com.ada.LocateCar_sb.service.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -23,14 +26,18 @@ public class ClienteController {
     }
 
     @GetMapping("/cliente/add")
-    public String mostrarAddCliente(Model model) {
+    public String mostrarAddCliente(Model model, Cliente cliente) {
         model.addAttribute("add", Boolean.TRUE);
-        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("cliente", Objects.nonNull(cliente) ? cliente : new Cliente());
         return "cliente-add";
     }
 
     @PostMapping("/cliente/add")
-    public String addCliente (@ModelAttribute("cliente") Cliente cliente) {
+    public String addCliente (@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result, Model model) {
+        if (result.hasErrors()){
+            return mostrarAddCliente(model, cliente);
+        }
+
         this.clienteService.createCliente(cliente);
         return "redirect:/clientes";
     }
