@@ -22,6 +22,9 @@ public class ClienteService {
     public List<Cliente> listarTodos() {
         return this.clienteRepository.findAll();
     }
+    public Optional<Cliente> buscarClientePorId(Long id) {
+        return this.clienteRepository.findById(id);
+    }
 
     public Optional<Cliente> buscarClientePorCpf(String cpf) {
         return this.clienteRepository.findByCpfContaining(cpf);

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class VeiculoController {
@@ -38,6 +39,21 @@ public class VeiculoController {
     @GetMapping("/veiculo/{veiculoId}/delete")
     public String deletarVeiculo (@PathVariable("veiculoId") Long veiculoId) {
         this.veiculoService.removerVeiculoPorId(veiculoId);
+        return "redirect:/veiculos";
+    }
+
+    @GetMapping("/veiculo/{veiculoId}/edit")
+    public String mostrarEditVeiculo(Model model, @PathVariable("veiculoId") Long veiculoId) {
+        model.addAttribute("add", Boolean.FALSE);
+        Optional<Veiculo> optionalVeiculo = this.veiculoService.buscarVeiculoPorId(veiculoId);
+        optionalVeiculo.ifPresent(veiculo -> model.addAttribute("veiculo", veiculo));
+        return "veiculo-add";
+    }
+
+    @PutMapping("/veiculo/{veiculoId}/edit")
+    public String EditVeiculo(@PathVariable("veiculoId") Long veiculoId, @ModelAttribute("veiculo") Veiculo veiculo){
+        veiculo.setId(veiculoId);
+        this.veiculoService.createVeiculo(veiculo);
         return "redirect:/veiculos";
     }
 

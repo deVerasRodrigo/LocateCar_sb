@@ -1,13 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout (~{:: main})}">
 <head>
-    <meta charset="UTF-8" />
-    <title>Veiculos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <h1>LocateCar</h1>
-    <a class="btn btn-primary btn-sm" th:href="@{/veiculos}">Veículos</a>
-    <a class="btn btn-primary btn-sm" th:href="@{/clientes}">Clientes</a>
+<main>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">LOCATE CAR</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="btn btn-warning btn-sm" th:href="@{/veiculos}">Veículos</a>
+                        <a class="btn btn-warning btn-sm" th:href="@{/clientes}">Clientes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</main>
 </body>
 </html>
