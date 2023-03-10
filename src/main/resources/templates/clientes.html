@@ -10,27 +10,30 @@
 
 <div>
     <nobr>
-        <a th:href="@{/cliente/add}">Add CLiente</a> |
-        <a th:href="@{/}">Voltar</a>
+        <a class="btn btn-primary btn-sm" th:href="@{/cliente/add}">Add CLiente</a> |
+        <a class="btn btn-secondary btn-sm" th:href="@{/}">Voltar</a>
     </nobr>
 </div>
 <br/><br/>
 <div>
-    <table border="1">
+    <table class="table">
         <tr>
             <th>Id</th>
-            <th>Nome</th>
             <th>CPF</th>
+            <th>Nome</th>
             <th>E-mail</th>
             <th>Maior de Idade</th>
         </tr>
         <tr th:each ="cliente : ${clientes}">
-            <td><a th:href="@{/cliente/{clienteId}(clienteId=${cliente.id})}" th:utext="${cliente.id}">...</a></td>
-            <td><a th:href="@{/cliente/{clienteId}(clienteId=${cliente.id})}" th:utext="${cliente.cpf}">...</a></td>
+            <td th:utext="${cliente.id}">...</td>
+            <td th:utext="${cliente.cpf}">...</td>
             <td th:utext="${cliente.nome}">...</td>
             <td th:utext="${cliente.email}">...</td>
             <td th:utext="${cliente.maiorDeIdade}">...</td>
-            <td><a th:href="@{/clientes/{clienteId}/edit(clienteId=${cliente.id})}">Edit</a></td>
+            <td>
+                <a class="btn btn-primary btn-sm" th:href="@{/cliente/{clienteId}/edit(clienteId=${cliente.id})}">Edit</a>
+                <a class="btn btn-danger btn-sm" th:href="@{/cliente/{clienteId}/delete(clienteId=${cliente.id})}">Delete</a>
+            </td>
         </tr>
     </table>
 </div>
